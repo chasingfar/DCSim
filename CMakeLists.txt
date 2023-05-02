@@ -16,6 +16,8 @@ add_library(dcsim
     src/chip.cpp
     src/circuit.cpp
     )
+target_include_directories(dcsim PUBLIC include)
+target_compile_features(dcsim PUBLIC cxx_std_23)
 
 add_executable(main main.cpp)
 target_link_libraries(main dcsim)
