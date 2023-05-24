@@ -81,8 +81,8 @@ namespace DCSim {
 		Enable oe;
 		Port<Size> I,O;
 		explicit Buffer(std::string name=""):Chip(std::move(name)){
-			add_inputs(oe,I);
-			add_ports(O);
+			add_inputs(oe);
+			add_ports(I,O);
 		}
 		void run() override {
 			O=Level::Floating;
