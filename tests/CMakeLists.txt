@@ -15,9 +15,6 @@ add_executable(tests
 target_compile_features(tests PRIVATE cxx_std_23)
 target_link_libraries(tests
     PUBLIC
-        dcsim
+        libdcsim
     PRIVATE 
         doctest)
-
-#enable_testing()
-#add_test(tests tests)

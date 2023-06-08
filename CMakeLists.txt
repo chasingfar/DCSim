@@ -10,15 +10,18 @@ add_link_options(-stdlib=libc++)
 
 include(cmake/CPM.cmake)
 
-add_library(dcsim
+add_library(libdcsim
     src/level.cpp
     src/wire.cpp
     src/chip.cpp
     src/circuit.cpp
     )
-target_include_directories(dcsim PUBLIC include)
-target_compile_features(dcsim PUBLIC cxx_std_23)
+target_include_directories(libdcsim PUBLIC include)
+target_compile_features(libdcsim PUBLIC cxx_std_23)
 
-add_executable(main main.cpp)
-target_link_libraries(main dcsim)
-add_subdirectory(tests)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+    add_executable(dcsim main.cpp)
+    target_link_libraries(dcsim libdcsim)
+    
+    add_subdirectory(tests)
+endif()
