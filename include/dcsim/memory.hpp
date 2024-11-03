@@ -37,7 +37,7 @@ namespace DCSim {
 			set(0);
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os << D(s) << "=>" << data << "=>" << Q(s) << "(clk=" << clk(s) << ")";
 			};
 		}
@@ -75,7 +75,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<Base::print(s)<<"(pr="<<pr(s)<<",clr="<<clr(s)<<")";
 			};
 		}
@@ -96,7 +96,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os << Base::print(s) << "(ce=" << ce(s) << ")";
 			};
 		}
@@ -118,7 +118,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<Base::print(s)<<"(clr="<<clr(s)<<")";
 			};
 		}
@@ -143,7 +143,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<Base::print(s)
 				<<"(ce1=" << ce1(s)
 				<<",ce2=" << ce2(s)
@@ -183,7 +183,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"data["<<A(s)<<"]="<<D(s)<<"(cow="<<ce(s)<<oe(s)<<we(s)<<")";
 			};
 		}

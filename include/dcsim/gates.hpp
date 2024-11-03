@@ -18,7 +18,7 @@ namespace DCSim {
 			Y=~(A.value()&B.value());
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"A("<<A(s)<<") NAND B("<<B(s)<<") = "<<Y(s);
 			};
 		}
@@ -35,7 +35,7 @@ namespace DCSim {
 			Y=~(A.value());
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"NOT A("<<A(s)<<") = "<<Y(s);
 			};
 		}
@@ -52,7 +52,7 @@ namespace DCSim {
 			Y=(A.value()&B.value());
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"A("<<A(s)<<") AND B("<<B(s)<<") = "<<Y(s);
 			};
 		}
@@ -69,7 +69,7 @@ namespace DCSim {
 			Y=(A.value()|B.value());
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"A("<<A(s)<<") OR B("<<B(s)<<") = "<<Y(s);
 			};
 		}
@@ -93,7 +93,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"I("<<I(s)<<")->O("<<O(s)<<") (oe="<<oe(s)<<")";
 			};
 		}
@@ -125,7 +125,7 @@ namespace DCSim {
 			}
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"A("<<A(s)<<")"<<(dir(s).get().value_or(0)==1?"->":"<-")<<"B("<<B(s)<<") (oe="<<oe(s)<<")";
 			};
 		}

@@ -21,7 +21,7 @@ namespace DCSim {
 			PeqQ = !( P.value() == Q.value() );
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"Cmp"<<P(s)<<"<=>"<<Q(s)<<"(P>Q:"<<PgtQ(s)<<",P==Q:"<<PeqQ(s)<<")";
 			};
 		}
@@ -42,7 +42,7 @@ namespace DCSim {
 			PeqQ=!(oe.is_enable()&&P.value()==Q.value());
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<"Eq"<<P(s)<<(PeqQ(s).get().value_or(0)==1?"!=":"==")<<Q(s)<<"(oe:"<<oe(s)<<")";
 			};
 		}
@@ -59,7 +59,7 @@ namespace DCSim {
 			O=A.value()+B.value();
 		}
 		[[nodiscard]] Util::Printable print(std::span<const Level> s) const override{
-			return [=](std::ostream& os){
+			return [=,this](std::ostream& os){
 				os<<A(s)<<"+"<<B(s)<<"="<<O(s);
 			};
 		}
